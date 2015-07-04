@@ -1,7 +1,6 @@
 package com.android3project.dev.kumpra;
 
-import android.app.DownloadManager;
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,15 +18,11 @@ import com.android3project.dev.kumpra.Item.ItemPresenter;
 import com.android3project.dev.kumpra.Item.ItemPresenterImpl;
 import com.android3project.dev.kumpra.Item.OnItemFinishedSave;
 import com.facebook.FacebookSdk;
-import com.facebook.internal.WebDialog;
 import com.facebook.share.model.ShareContent;
 import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
-import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
 import com.github.clans.fab.FloatingActionMenu;
+import com.rey.material.widget.FloatingActionButton;
 
 
 import org.w3c.dom.Text;
@@ -48,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnItemFinishedSav
     ListView lvItemList;
     @Bind(R.id.menu_down)
     FloatingActionMenu fabMenuDown;
+    private Drawable[] mDrawables = new Drawable[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,17 +114,6 @@ public class MainActivity extends AppCompatActivity implements OnItemFinishedSav
                 .setContentTitle("Kumprahunon")
                 .build();
         ShareDialog.show(this, content);
-//
-    }
-
-    private void shareContent() {
-        Bundle bundle = new Bundle();
-        bundle.putString("caption", "Harlem Shake Launcher for Android");
-        bundle.putString("description", "Your android can do the Harlem Shake. Download it from google play");
-        bundle.putString("link", "https://play.google.com/store/apps/details?id=mobi.shush.harlemlauncher");
-        bundle.putString("name", "Harlem Shake Launcher");
-        bundle.putString("picture", "http://shush.mobi/bla.png");
-//        new WebDialog.Builder(this, mySession, bundle).build().show();
     }
 
 
