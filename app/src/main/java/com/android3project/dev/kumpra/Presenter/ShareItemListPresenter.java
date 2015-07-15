@@ -3,8 +3,8 @@ package com.android3project.dev.kumpra.Presenter;
 import com.facebook.share.model.ShareContent;
 
 /**
- * Created by Dev on 7/10/2015.
+ * Created by Dev on 7/14/2015.
  */
-public interface SharePresenter {
+public interface ShareItemListPresenter {
     public ShareContent shareList();
 }

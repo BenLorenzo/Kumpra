@@ -5,4 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="empty_data_field_error"><![CDATA[Item Name & Item Qty cannot be empty]]></string>
     <string name="facebook_app_id">766823970104981</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

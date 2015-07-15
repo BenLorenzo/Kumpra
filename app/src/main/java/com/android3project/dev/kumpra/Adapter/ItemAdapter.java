@@ -1,10 +1,11 @@
 package com.android3project.dev.kumpra.Adapter;
 
-import android.content.Context;
+import android.os.Handler;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android3project.dev.kumpra.Entities.Item;
@@ -13,48 +14,45 @@ import com.android3project.dev.kumpra.R;
 import java.util.List;
 
 /**
- * Created by Dev on 7/3/2015.
+ * Created by Dev on 7/13/2015.
  */
-public class ItemAdapter extends BaseAdapter {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
-    private Context context;
-    private List<Item> itemsList;
+    List<Item> items;
 
-    public ItemAdapter(Context context, List<Item> list) {
-        this.context = context;
-        this.itemsList = list;
+    public ItemAdapter(List<Item> items) {
+        this.items = items;
     }
 
     @Override
-    public int getCount() {
-        return itemsList.size();
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row, parent, false);
+        ItemViewHolder itemViewHolder = new ItemViewHolder(v);
+        return itemViewHolder;
     }
 
     @Override
-    public Object getItem(int position) {
-        return itemsList.get(position);
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
+        holder.itemName.setText(items.get(position).getItemName());
+        holder.itemQty.setText(items.get(position).getItemQty());
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
-        Item itemEntry = itemsList.get(position);
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.row_item, null);
+    public int getItemCount() {
+        return items.size();
+    }
+
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
+        TextView itemName;
+        TextView itemQty;
+
+        public ItemViewHolder(View itemView) {
+            super(itemView);
+            cardView = (CardView) itemView.findViewById(R.id.cardview);
+            itemName = (TextView) itemView.findViewById(R.id.itemName);
+            itemQty = (TextView) itemView.findViewById(R.id.itemQty);
         }
-
-        TextView tvItemName = (TextView) convertView.findViewById(R.id.tvItemName);
-        tvItemName.setText(itemEntry.getItemName());
-
-        TextView tvItemQty = (TextView) convertView.findViewById(R.id.tvItemQty);
-        tvItemQty.setText(itemEntry.getItemQty());
-
-        return convertView;
     }
 }

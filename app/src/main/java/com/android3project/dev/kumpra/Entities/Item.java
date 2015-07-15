@@ -4,12 +4,20 @@ import android.content.Context;
 
 import com.orm.SugarRecord;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Dev on 7/3/2015.
  */
 public class Item extends SugarRecord<Item>{
     String itemName;
     String itemQty;
+
+    Item(String name, String qty) {
+        this.itemName = name;
+        this.itemQty = qty;
+    }
 
     public Item() {
     }
